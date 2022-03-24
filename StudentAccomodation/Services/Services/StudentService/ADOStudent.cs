@@ -43,5 +43,32 @@ namespace StudentAccomodation.Services.Services.StudentService
                 return returnList;
             }
         }
+
+        public List<Student> WaitingList()
+        {
+            List<Student> returnList = new List<Student>();
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            string query = "select * from Student where Has_Room=0 order by Registration_Date";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Student student = new Student();
+                        student.StudentNo = Convert.ToInt32(reader["Student_No"]);
+                        student.SName = Convert.ToString(reader["SName"]);
+                        student.SAddress = Convert.ToString(reader["SAddress"]);
+                        student.HasRent = Convert.ToBoolean(reader["Has_Room"]);
+                        student.RegistrationDate = Convert.ToDateTime(reader["Registration_Date"]);
+                        returnList.Add(student);
+                    }
+                }
+                return returnList;
+            }
+        }
     }
 }
