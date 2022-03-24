@@ -1,0 +1,29 @@
+﻿@page
+@model StudentAccomodation.Pages.VacantRooms.GetVacantRoomsModel
+@{
+}
+<h1>Vacant Rooms</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>  Student Number   </th>
+            <th>    Name  </th>
+            <th>  Address  </th>
+            <th>    Has Rent  </th>
+            <th>  Registration Date  </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.students)
+        {
+            <tr>
+                <td> @item.StudentNo </td>
+                <td> @item.SName </td>
+                <td> @item.SAddress </td>
+                <td> @item.HasRent </td>
+                <td> @item.RegistrationDate </td>
+            </tr>
+        }
+    </tbody>
+</table>
