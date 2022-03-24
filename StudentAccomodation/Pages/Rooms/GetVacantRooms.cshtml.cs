@@ -12,6 +12,7 @@ namespace StudentAccomodation.Pages.VacantRooms
     public class GetVacantRoomsModel : PageModel
     {
         private IRoomService roomService;
+        [BindProperty] public Leasing Leasing { get; set; }
 
         public IEnumerable<Room> rooms { get; set; }
 
@@ -22,6 +23,18 @@ namespace StudentAccomodation.Pages.VacantRooms
         public void OnGet()
         {
             rooms = roomService.GetAllVacantRooms();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            Leasing.PlaceNo = Convert.ToInt32(Request.Form["placeNo"]);
+
+            roomService.AddLeasing(Leasing);
+            return RedirectToPage("GetRooms");
         }
     }
 }
