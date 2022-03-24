@@ -10,5 +10,7 @@ namespace StudentAccomodation.Services.Interfaces
     {
         IEnumerable<Room> GetAllRooms();
         IEnumerable<Room> GetAllVacantRooms();
+
+        void AddLeasing(Leasing leasing);
     }
 }

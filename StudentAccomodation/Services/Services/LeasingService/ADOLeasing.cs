@@ -10,6 +10,7 @@ namespace StudentAccomodation.Services.Services.LeasingService
 {
     public class ADOLeasing
     {
+       
         public IConfiguration Configuration { get; }
         public ADOLeasing(IConfiguration configuration)
         {
@@ -20,7 +21,7 @@ namespace StudentAccomodation.Services.Services.LeasingService
         {
             List<Leasing> returnList = new List<Leasing>();
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            string query = "select *  from Leasing";
+            string query = "select * from Leasing";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -43,5 +44,7 @@ namespace StudentAccomodation.Services.Services.LeasingService
                 return returnList;
             }
         }
+
+        
     }
 }
