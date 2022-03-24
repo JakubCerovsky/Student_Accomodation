@@ -1,11 +1,8 @@
 ﻿@page
-@model StudentAccomodation.Pages.Rooms.GetRoomsModel
+@model StudentAccomodation.Pages.VacantRooms.GetVacantRoomsModel
 @{
 }
-<h1>Rooms</h1>
-<p>
-    <a asp-page="/Rooms/GetVacantRooms">Vacant Rooms</a>
-</p>
+<h1>Vacant Rooms</h1>
 <table class="table">
     <thead>
         <tr>
@@ -20,14 +17,14 @@
     <tbody>
         @foreach (var item in Model.rooms)
         {
-        <tr>
-            <td> @item.PlaceNo </td>
-            <td> @item.RoomNo </td>
-            <td> @item.RentPerSemester EURO</td>
-            <td> @item.Occupied </td>
-            <td> @item.ApartmentNo </td>
-            <td> @item.DormitoryNo </td>
-        </tr>
+            <tr>
+                <td> @item.PlaceNo </td>
+                <td> @item.RoomNo </td>
+                <td> @item.RentPerSemester EURO</td>
+                <td> @item.Occupied </td>
+                <td> @item.ApartmentNo </td>
+                <td> @item.DormitoryNo </td>
+            </tr>
         }
     </tbody>
 </table>
