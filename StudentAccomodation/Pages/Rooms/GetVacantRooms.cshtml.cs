@@ -11,16 +11,17 @@ namespace StudentAccomodation.Pages.VacantRooms
 {
     public class GetVacantRoomsModel : PageModel
     {
-        private IStudentService rooomService;
+        private IRoomService roomService;
 
         public IEnumerable<Room> rooms { get; set; }
 
-        public GetVacantRoomsModel(IStudentService service)
+        public GetVacantRoomsModel(IRoomService service)
         {
-            rooomService = service;
+            roomService = service;
         }
         public void OnGet()
         {
-            rooms = rooomService.GetAllRooms();
+            rooms = roomService.GetAllVacantRooms();
         }
     }
+}
