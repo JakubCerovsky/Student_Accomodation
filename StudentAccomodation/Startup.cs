@@ -5,6 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StudentAccomodation.Services.Interfaces;
+using StudentAccomodation.Services.Services.ApartmentService;
+using StudentAccomodation.Services.Services.DormitoryService;
+using StudentAccomodation.Services.Services.LeasingService;
+using StudentAccomodation.Services.Services.RoomService;
 using StudentAccomodation.Services.Services.StudentService;
 using System;
 using System.Collections.Generic;
@@ -26,8 +30,21 @@ namespace StudentAccomodation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ADOStudent>();
+            
+            services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<ADORoom>(); 
+           
+            services.AddScoped<ILeasingService, LeasingService>();
+            services.AddScoped<ADOLeasing>();
+
+            services.AddScoped<IDormitoryService, DormitoryService>();
+            services.AddScoped<ADODormitory>();
+
+            services.AddScoped<IApartmentService, ApartmentService>();
+            services.AddScoped<ADOApartment>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

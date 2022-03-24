@@ -13,7 +13,7 @@ namespace StudentAccomodation.Services.Services.StudentService
 
         public StudentService(ADOStudent studentService)
         {
-            service=studentService;
+            service = studentService;
         }
 
         public IEnumerable<Student> GetAllStudents()

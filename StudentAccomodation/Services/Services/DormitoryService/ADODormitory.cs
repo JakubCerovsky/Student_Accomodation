@@ -6,21 +6,21 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudentAccomodation.Services.Services.LeasingService
+namespace StudentAccomodation.Services.Services.DormitoryService
 {
-    public class ADOLeasing
+    public class ADODormitory
     {
         public IConfiguration Configuration { get; }
-        public ADOLeasing(IConfiguration configuration)
+        public ADODormitory(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public List<Leasing> GetAllLeasings()
+        public List<Dormitory> GetAllDormitories()
         {
-            List<Leasing> returnList = new List<Leasing>();
+            List<Dormitory> returnList = new List<Dormitory>();
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            string query = "select *  from Leasing";
+            string query = "select *  from Dormitory";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -30,14 +30,11 @@ namespace StudentAccomodation.Services.Services.LeasingService
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        Leasing leasing = new Leasing();
-                        leasing.LeasingNo = Convert.ToInt32(reader["Leasing_No"]);
-                        leasing.DateFrom = Convert.ToDateTime(reader["Date_From"]);
-                        leasing.DateTo = Convert.ToDateTime(reader["Date_To"]);
-                        leasing.StudentNo = Convert.ToInt32(reader["Student_No"]);
-                        leasing.PlaceNo = Convert.ToInt32(reader["Place_No"]);
-
-                        returnList.Add(leasing);
+                        Dormitory dormitory = new Dormitory();
+                        dormitory.DormitoryNo = Convert.ToInt32(reader["Dormitory_No"]);
+                        dormitory.Name = Convert.ToString(reader["Name"]);
+                        dormitory.Address = Convert.ToString(reader["Address"]);
+                        returnList.Add(dormitory);
                     }
                 }
                 return returnList;

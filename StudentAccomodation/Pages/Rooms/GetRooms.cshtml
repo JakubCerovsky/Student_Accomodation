@@ -3,3 +3,28 @@
 @{
 }
 <h1>Rooms</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>  Place Number   </th>
+            <th>  Room Number  </th>
+            <th>  Rent Per Semester  </th>
+            <th>  Occupied  </th>
+            <th>  Apartment Number  </th>
+            <th>  Dormitory Number  </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.rooms)
+        {
+        <tr>
+            <td> @item.PlaceNo </td>
+            <td> @item.RoomNo </td>
+            <td> @item.RentPerSemester EURO</td>
+            <td> @item.Occupied </td>
+            <td> @item.ApartmentNo </td>
+            <td> @item.DormitoryNo </td>
+        </tr>
+        }
+    </tbody>
+</table>
