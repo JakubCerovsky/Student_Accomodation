@@ -8,7 +8,8 @@ namespace StudentAccomodation.Models
 {
     public class Apartment
     {
-        public int ApartmentNo { get; set; }
+
+        public int? ApartmentNo { get; set; } = null;
         [Required]
         public string Address { get; set; }
         public string Types { get; set; }
