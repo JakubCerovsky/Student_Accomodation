@@ -1,11 +1,13 @@
-﻿using System;
+﻿using StudentAccomodation.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace StudentAccomodation.Services.Interfaces
 {
-    interface IApartmentService
+    public interface IApartmentService
     {
+        IEnumerable<Apartment> GetAllApartments();
     }
 }

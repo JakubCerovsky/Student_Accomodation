@@ -8,7 +8,7 @@ namespace StudentAccomodation.Models
 {
     public class Dormitory
     {
-        public int DormitorytNo { get; set; }
+        public int DormitoryNo { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

@@ -9,5 +9,7 @@ namespace StudentAccomodation.Services.Interfaces
     public interface IStudentService
     {
         IEnumerable<Student> GetAllStudents();
+
+        IEnumerable<Student> WaitingList();
     }
 }

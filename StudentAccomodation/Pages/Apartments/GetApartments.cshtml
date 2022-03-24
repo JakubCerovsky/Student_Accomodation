@@ -3,3 +3,23 @@
 @{
 }
 <h1>Apartments</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>  Apartment Number   </th>
+            <th>  Types  </th>
+            <th>  Address  </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.apartments)
+        {
+            <tr>
+                <td> @item.ApartmentNo </td>
+                <td> @item.Types </td>
+                <td> @item.Address </td>
+            </tr>
+        }
+    </tbody>
+</table>

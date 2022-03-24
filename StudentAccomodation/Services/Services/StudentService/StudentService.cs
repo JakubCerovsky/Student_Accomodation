@@ -13,12 +13,17 @@ namespace StudentAccomodation.Services.Services.StudentService
 
         public StudentService(ADOStudent studentService)
         {
-            service=studentService;
+            service = studentService;
         }
 
         public IEnumerable<Student> GetAllStudents()
         {
             return service.GetAllStudents();
+        }
+
+        public IEnumerable<Student> WaitingList()
+        {
+            return service.WaitingList();
         }
     }
 }
