@@ -10,17 +10,19 @@ namespace StudentAccomodation.Services.Services.LeasingService
 {
     public class ADOLeasing
     {
+        private string connectionString;
         public IConfiguration Configuration { get; }
         public ADOLeasing(IConfiguration configuration)
         {
             Configuration = configuration;
+            connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public List<Leasing> GetAllLeasings()
         {
             List<Leasing> returnList = new List<Leasing>();
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            string query = "select *  from Leasing";
+            string query = "select * from Leasing";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -41,6 +43,21 @@ namespace StudentAccomodation.Services.Services.LeasingService
                     }
                 }
                 return returnList;
+            }
+        }
+
+        public void AddLeasing(Leasing leasing)
+        {
+
+            string query = $"Insert into Leasing Values('{leasing.LeasingNo}', '{leasing.DateFrom}, '{leasing.DateTo}, '{leasing.PlaceNo}, '{leasing.StudentNo}')";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                }
             }
         }
     }
