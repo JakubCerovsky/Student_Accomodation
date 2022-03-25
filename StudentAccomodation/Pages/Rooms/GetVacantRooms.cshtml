@@ -17,14 +17,22 @@
     <tbody>
         @foreach (var item in Model.rooms)
         {
-            <tr>
-                <td> @item.PlaceNo </td>
-                <td> @item.RoomNo </td>
-                <td> @item.RentPerSemester EURO</td>
-                <td> @item.Occupied </td>
-                <td> @item.ApartmentNo </td>
-                <td> @item.DormitoryNo </td>
-            </tr>
+        <tr>
+            <td> @item.PlaceNo </td>
+            <td> @item.RoomNo </td>
+            <td> @item.RentPerSemester EURO</td>
+            <td> @item.Occupied </td>
+            <td> @item.ApartmentNo </td>
+            <td> @item.DormitoryNo </td>
+            <td>
+                <form method="post">
+                    <div class="form-group">
+                        <input type="submit" value="assign" class="btn btn-primary" />
+                        <input value="@item.PlaceNo" name="placeNo" class="btn btn-primary" hidden />
+                    </div>
+                </form>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

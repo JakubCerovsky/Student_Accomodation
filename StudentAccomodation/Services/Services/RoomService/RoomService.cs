@@ -16,6 +16,11 @@ namespace StudentAccomodation.Services.Services.RoomService
             service = roomService;
         }
 
+        public void AddLeasing(Leasing leasing)
+        {
+            service.AddLeasing(leasing);
+        }
+
         public IEnumerable<Room> GetAllRooms()
         {
             return service.GetAllRooms();
