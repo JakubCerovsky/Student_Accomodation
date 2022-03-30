@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentAccomodation.Models;
 using StudentAccomodation.Services.Interfaces;
 
-namespace StudentAccomodation.Pages.VacantRooms
+namespace StudentAccomodation.Pages.Apartments
 {
-    public class GetVacantRoomsModel : PageModel
+    public class VacantApartmentModel : PageModel
     {
-        private IRoomService roomService;
+        private IApartmentService _appartService;
+        private IRoomService _roomService;
         [BindProperty] public Leasing Leasing { get; set; }
-
         public IEnumerable<Room> rooms { get; set; }
 
-        public GetVacantRoomsModel(IRoomService service)
+        public VacantApartmentModel(IApartmentService appartService, IRoomService roomService)
         {
-            roomService = service;
+            _appartService = appartService;
+            _roomService = roomService;
         }
-        public void OnGet()
+        public void OnGet(int apartNo)
         {
-            rooms = roomService.GetAllVacantRooms();
+            rooms = _appartService.GetVacantRoomsApartment(apartNo);
         }
 
         public IActionResult OnPost()
@@ -33,8 +34,8 @@ namespace StudentAccomodation.Pages.VacantRooms
             }
             Leasing.PlaceNo = Convert.ToInt32(Request.Form["placeNo"]);
 
-            roomService.AddLeasing(Leasing);
-            return RedirectToPage("GetRooms");
+            _roomService.AddLeasing(Leasing);
+            return RedirectToPage("/Leasings/GetLeasings");
         }
     }
 }

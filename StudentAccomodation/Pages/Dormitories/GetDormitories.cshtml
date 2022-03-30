@@ -10,16 +10,18 @@
             <th>  Dormitory Number   </th>
             <th>  Name  </th>
             <th>  Address  </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.dormitories)
         {
-            <tr>
-                <td> @item.DormitoryNo </td>
-                <td> @item.Name </td>
-                <td> @item.Address </td>
-            </tr>
+        <tr>
+            <td> @item.DormitoryNo </td>
+            <td> @item.Name </td>
+            <td> @item.Address </td>
+            <td> <a asp-page="/Dormitories/VacantDormitory" asp-route-dormitoryNo="@item.DormitoryNo">Vacant Rooms</a></td>
+        </tr>
         }
     </tbody>
 </table>

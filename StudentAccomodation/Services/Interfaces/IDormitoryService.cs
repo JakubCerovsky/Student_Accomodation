@@ -9,5 +9,7 @@ namespace StudentAccomodation.Services.Interfaces
     public interface IDormitoryService
     {
         IEnumerable<Dormitory> GetAllDormitories();
+
+        IEnumerable<Room> GetVacantRoomsDormitory(int dormitory);
     }
 }
