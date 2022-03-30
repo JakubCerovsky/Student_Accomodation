@@ -1,0 +1,33 @@
+﻿@page
+@model StudentAccomodation.Pages.Apartments.VacantApartmentModel
+@{
+}
+<h1>Vacant Rooms </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>  Place Number   </th>
+            <th>  Room Number  </th>
+            <th>  Rent Per Semester  </th>
+            <th>  Assign a Student  </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.rooms)
+        {
+            <tr>
+                <td> @item.PlaceNo </td>
+                <td> @item.RoomNo </td>
+                <td> @item.RentPerSemester EURO</td>
+                <td>
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="submit" value="Assign" class="btn btn-primary" />
+                                <input value="@item.PlaceNo" name="placeNo" class="btn btn-primary" hidden />
+                            </div>
+                        </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

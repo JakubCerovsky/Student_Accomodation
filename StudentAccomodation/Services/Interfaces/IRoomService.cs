@@ -9,7 +9,6 @@ namespace StudentAccomodation.Services.Interfaces
     public interface IRoomService
     {
         IEnumerable<Room> GetAllRooms();
-        IEnumerable<Room> GetAllVacantRooms();
 
         void AddLeasing(Leasing leasing);
     }
