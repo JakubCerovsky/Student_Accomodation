@@ -9,23 +9,67 @@
 <table class="table">
     <thead>
         <tr>
-            <th>  Student Number   </th>
-            <th>    Name  </th>
-            <th>  Address  </th>
-            <th>    Has Rent  </th>
-            <th>  Registration Date  </th>
+            <th>Student Number</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Has Rent</th>
+            <th>Registration Date</th>
+            <th>Leasing</th>
+            <th>Delete Student</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.students)
+        @if (Model.Student.HasRent == true)
         {
-        <tr>
-            <td> @item.StudentNo </td>
-            <td> @item.SName </td>
-            <td> @item.SAddress </td>
-            <td> @item.HasRent </td>
-            <td> @item.RegistrationDate </td>
-        </tr>
+            @foreach (var item in Model.students)
+            {
+                <tr>
+                    <td> @item.StudentNo </td>
+                    <td> @item.SName </td>
+                    <td> @item.SAddress </td>
+                    <td> @item.HasRent </td>
+                    <td> @item.RegistrationDate.ToShortDateString() </td>
+                    <td>
+                        @*<form method="post">*@
+                        <div class="form-group">
+                            <input type="submit" value="Leasing" class="btn btn-success" />
+                            <input value="@item.StudentNo" name="studentNo" class="btn btn-primary" hidden />
+                        </div>
+                        @*</form>*@
+                    </td>
+                    <td>
+                        @*<form method="post">*@
+                        <div class="form-group">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            <input value="@item.StudentNo" name="studentNo" class="btn btn-primary" hidden />
+                        </div>
+                        @*</form>*@
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            @foreach (var item in Model.students)
+            {
+                <tr>
+                    <td> @item.StudentNo </td>
+                    <td> @item.SName </td>
+                    <td> @item.SAddress </td>
+                    <td> @item.HasRent </td>
+                    <td> @item.RegistrationDate.ToShortDateString() </td>
+                    <td>
+                    </td>
+                    <td>
+                        @*<form method="post">*@
+                        <div class="form-group">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            <input value="@item.StudentNo" name="studentNo" class="btn btn-primary" hidden />
+                        </div>
+                        @*</form>*@
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

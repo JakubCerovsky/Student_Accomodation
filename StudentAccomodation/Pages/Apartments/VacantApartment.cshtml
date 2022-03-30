@@ -3,13 +3,16 @@
 @{
 }
 <h1>Vacant Rooms </h1>
+<p>
+    Current number of Vacant Rooms = @Model.rooms.Count()
+</p>
 <table class="table">
     <thead>
         <tr>
-            <th>  Place Number   </th>
-            <th>  Room Number  </th>
-            <th>  Rent Per Semester  </th>
-            <th>  Assign a Student  </th>
+            <th>Place Number</th>
+            <th>Room Number</th>
+            <th>Rent Per Semester</th>
+            <th>Assign a Student</th>
         </tr>
     </thead>
     <tbody>
@@ -31,3 +34,6 @@
         }
     </tbody>
 </table>
+<p>
+    <a asp-page="/Apartments/GetApartments">Back to Apartments</a>
+</p>

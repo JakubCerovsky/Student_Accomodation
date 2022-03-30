@@ -10,9 +10,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>  Student Number   </th>
-            <th>    Name  </th>
-            <th>  Registration Date  </th>
+            <th>Student Number</th>
+            <th>Student Name</th>
+            <th>Registration Date</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
             <tr>
                 <td> @item.StudentNo </td>
                 <td> @item.SName </td>
-                <td> @item.RegistrationDate </td>
+                <td> @item.RegistrationDate.ToShortDateString() </td>
             </tr>
         }
     </tbody>

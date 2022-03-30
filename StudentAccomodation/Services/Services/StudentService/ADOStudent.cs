@@ -44,6 +44,31 @@ namespace StudentAccomodation.Services.Services.StudentService
             }
         }
 
+        public Student GetStudentByStudentNo(int studentNo)
+        {
+            Student student = new Student();
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            string query = $"select *  from Student where Student.Student_No = {studentNo}";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {                        
+                        student.StudentNo = Convert.ToInt32(reader["Student_No"]);
+                        student.SName = Convert.ToString(reader["SName"]);
+                        student.SAddress = Convert.ToString(reader["SAddress"]);
+                        student.HasRent = Convert.ToBoolean(reader["Has_Room"]);
+                        student.RegistrationDate = Convert.ToDateTime(reader["Registration_Date"]);
+                    }
+                }
+                return student;
+            }
+        }
+
         public List<Student> WaitingList()
         {
             List<Student> returnList = new List<Student>();

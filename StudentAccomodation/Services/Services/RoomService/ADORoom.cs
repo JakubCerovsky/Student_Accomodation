@@ -20,6 +20,7 @@ namespace StudentAccomodation.Services.Services.RoomService
 
         public List<Room> GetAllRooms()
         {
+            string text = $"Is not part of any Dormitory";
             List<Room> returnList = new List<Room>();
             string query = "select *  from Room";
 
@@ -66,10 +67,11 @@ namespace StudentAccomodation.Services.Services.RoomService
                 connection.Close();
             }
 
-            string d = DateTime.Now.ToString("yyyy-MM-dd");
+            //DateTime df = new DateTime(2022, 7, 1,0,0,0);
+            //DateTime dt = new DateTime(2022,12,31,0,0,0);
+           
 
-
-            string query = $"Insert into Leasing (Student_No, Place_No, Date_From, Date_To) Values({student.StudentNo}, {leasing.PlaceNo}, {d}, {d}); " +
+            string query = $"Insert into Leasing (Student_No, Place_No, Date_From, Date_To) Values({student.StudentNo}, {leasing.PlaceNo},'20220701 00:00:00 AM' ,'20221231 00:00:00 AM'); " +
                 $"UPDATE Student SET Has_Room = 1 WHERE Student_No = {student.StudentNo}; " +
                 $"UPDATE Room SET Occupied = 1 WHERE Place_No = {leasing.PlaceNo};";
 

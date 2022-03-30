@@ -25,5 +25,10 @@ namespace StudentAccomodation.Services.Services.StudentService
         {
             return service.WaitingList();
         }
+
+        public Student GetStudentByStudentNo(int studentNo)
+        {
+            return service.GetStudentByStudentNo(studentNo);
+        }
     }
 }
