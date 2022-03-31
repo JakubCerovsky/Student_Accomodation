@@ -5,13 +5,13 @@
 <h1>Leasings</h1>
 <br />
 <table class="table">
-    <thead>
+    <thead class="thead-light">
         <tr>
-            <th>  Leasing Number   </th>
-            <th>  Date From  </th>
-            <th>  Date To  </th>
-            <th>  Student Number  </th>
-            <th>  Place Number  </th>
+            <th>Leasing Number</th>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Student Number</th>
+            <th>Place Number</th>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +19,8 @@
         {
             <tr>
                 <td> @item.LeasingNo </td>
-                <td> @item.DateFrom </td>
-                <td> @item.DateTo </td>
+                <td> @item.DateFrom.ToShortDateString() </td>
+                <td> @item.DateTo.ToShortDateString() </td>
                 <td> @item.StudentNo </td>
                 <td> @item.PlaceNo </td>
             </tr>

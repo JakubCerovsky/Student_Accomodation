@@ -2,17 +2,17 @@
 @model StudentAccomodation.Pages.Students.WaitingListModel
 @{
 }
-<h2>Waiting List</h2>
+<h1>Waiting List</h1>
 <p>
     <a asp-page="/Students/GetStudents">Back to List</a>
 </p>
 
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
-            <th>  Student Number   </th>
-            <th>    Name  </th>
-            <th>  Registration Date  </th>
+            <th>Student Number</th>
+            <th>Student Name</th>
+            <th>Registration Date</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
             <tr>
                 <td> @item.StudentNo </td>
                 <td> @item.SName </td>
-                <td> @item.RegistrationDate </td>
+                <td> @item.RegistrationDate.ToShortDateString() </td>
             </tr>
         }
     </tbody>

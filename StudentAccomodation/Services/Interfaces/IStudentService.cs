@@ -11,5 +11,7 @@ namespace StudentAccomodation.Services.Interfaces
         IEnumerable<Student> GetAllStudents();
 
         IEnumerable<Student> WaitingList();
+
+        Student GetStudentByStudentNo(int studentNo);
     }
 }
