@@ -30,5 +30,10 @@ namespace StudentAccomodation.Services.Services.StudentService
         {
             return service.GetStudentByStudentNo(studentNo);
         }
+
+        public void DeleteStudent(Student student)
+        {
+            service.DeleteStudent(student);
+        }
     }
 }

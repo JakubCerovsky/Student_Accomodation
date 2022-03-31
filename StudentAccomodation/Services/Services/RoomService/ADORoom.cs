@@ -46,43 +46,12 @@ namespace StudentAccomodation.Services.Services.RoomService
             }
         }
 
-        public void AddLeasing(Leasing leasing)
-        {
-            Student student = new Student();
-            string queryStudents = "select * from Student where Has_Room = 0 order by Registration_Date";
+        //public static Room UpdateRoomStatus(Room room)
+        //{
+        //    return room;
+        //}
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(queryStudents, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    student.StudentNo = Convert.ToInt32(reader["Student_No"]);
-                    student.SName = Convert.ToString(reader["SName"]);
-                    student.SAddress = Convert.ToString(reader["SAddress"]);
-                    student.HasRent = Convert.ToBoolean(reader["Has_Room"]);
-                    student.RegistrationDate = Convert.ToDateTime(reader["Registration_Date"]);
-                }
-                connection.Close();
-            }
 
-            //DateTime df = new DateTime(2022, 7, 1,0,0,0);
-            //DateTime dt = new DateTime(2022,12,31,0,0,0);
-           
-
-            string query = $"Insert into Leasing (Student_No, Place_No, Date_From, Date_To) Values({student.StudentNo}, {leasing.PlaceNo},'20220701 00:00:00 AM' ,'20221231 00:00:00 AM'); " +
-                $"UPDATE Student SET Has_Room = 1 WHERE Student_No = {student.StudentNo}; " +
-                $"UPDATE Room SET Occupied = 1 WHERE Place_No = {leasing.PlaceNo};";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            { 
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    int numberOfRowsAffected = command.ExecuteNonQuery();
-                }
-            }
-        }
+        
     }
 }

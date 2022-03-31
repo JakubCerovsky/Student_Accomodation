@@ -11,16 +11,17 @@ namespace StudentAccomodation.Services.Services.StudentService
 {
     public class ADOStudent
     {
+        private string connectionString;
         public IConfiguration Configuration { get; }
         public ADOStudent(IConfiguration configuration)
         {
             Configuration = configuration;
+            connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public List<Student> GetAllStudents()
         {
             List<Student> returnList = new List<Student>();
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             string query = "select *  from Student";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -47,8 +48,7 @@ namespace StudentAccomodation.Services.Services.StudentService
         public Student GetStudentByStudentNo(int studentNo)
         {
             Student student = new Student();
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            string query = $"select *  from Student where Student.Student_No = {studentNo}";
+            string query = $"select * from Student where Student.Student_No = {studentNo}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -72,7 +72,6 @@ namespace StudentAccomodation.Services.Services.StudentService
         public List<Student> WaitingList()
         {
             List<Student> returnList = new List<Student>();
-            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             string query = "select * from Student where Has_Room=0 order by Registration_Date";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -93,6 +92,40 @@ namespace StudentAccomodation.Services.Services.StudentService
                     }
                 }
                 return returnList;
+            }
+        }
+
+        public void DeleteStudent(Student student)
+        {
+
+            if (student.HasRent == true)
+            {
+                string leasingQuery = $"DELETE from Leasing where Leasing.Student_No={student.StudentNo}" +
+                    $"DELETE from Student where Student.Student_No={student.StudentNo}";
+                     
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(leasingQuery, connection))
+                    {
+                        int numberOfRowsAffected = command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+            else
+            {
+                string query = $"DELETE from Student where Student.Student_No={student.StudentNo}";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        int numberOfRowsAffected = command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+
             }
         }
     }

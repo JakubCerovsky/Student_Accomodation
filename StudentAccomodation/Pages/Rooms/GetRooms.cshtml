@@ -5,7 +5,7 @@
 <h1>Rooms</h1>
 <br />
 <table class="table">
-    <thead class="thead-light">
+    <thead class="thead-light" >
         <tr>
             <th>Place Number</th>
             <th>Room Number</th>
@@ -23,8 +23,26 @@
             <td> @item.RoomNo </td>
             <td> @item.RentPerSemester EURO</td>
             <td> @item.Occupied </td>
-            <td> @item.ApartmentNo </td>
-            <td> @item.DormitoryNo </td>
+            <td>
+                @if (item.ApartmentNo == 0)
+                {
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    @item.ApartmentNo
+                }
+            </td>
+            <td>
+                @if (item.DormitoryNo == 0)
+                {
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    @item.DormitoryNo
+                }
+            </td>
         </tr>
         }
     </tbody>

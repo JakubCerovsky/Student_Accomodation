@@ -12,14 +12,14 @@ namespace StudentAccomodation.Pages.Apartments
     public class VacantApartmentModel : PageModel
     {
         private IApartmentService _appartService;
-        private IRoomService _roomService;
+        private ILeasingService _leasingService;
         [BindProperty] public Leasing Leasing { get; set; }
         public IEnumerable<Room> rooms { get; set; }
 
-        public VacantApartmentModel(IApartmentService appartService, IRoomService roomService)
+        public VacantApartmentModel(IApartmentService appartService, ILeasingService leasingService)
         {
             _appartService = appartService;
-            _roomService = roomService;
+            _leasingService = leasingService;
         }
         public void OnGet(int apartNo)
         {
@@ -34,7 +34,7 @@ namespace StudentAccomodation.Pages.Apartments
             }
             Leasing.PlaceNo = Convert.ToInt32(Request.Form["placeNo"]);
 
-            _roomService.AddLeasing(Leasing);
+            _leasingService.AddLeasing(Leasing);
             return RedirectToPage("/Leasings/GetLeasings");
         }
     }

@@ -10,6 +10,7 @@ using StudentAccomodation.Services.Services.DormitoryService;
 using StudentAccomodation.Services.Services.LeasingService;
 using StudentAccomodation.Services.Services.RoomService;
 using StudentAccomodation.Services.Services.StudentService;
+using StudentAccomodation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
