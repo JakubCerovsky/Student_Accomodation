@@ -25,5 +25,10 @@ namespace StudentAccomodation.Services.Services.LeasingService
         {
             service.AddLeasing(leasing);
         }
+
+        public Leasing GetLeasingByStudentNo(int studentNo)
+        {
+            return service.GetLeasingByStudentNo(studentNo);
+        }
     }
 }

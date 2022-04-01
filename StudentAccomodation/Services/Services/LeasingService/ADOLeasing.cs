@@ -45,6 +45,30 @@ namespace StudentAccomodation.Services.Services.LeasingService
             }
         }
 
+        public Leasing GetLeasingByStudentNo(int studentNo)
+        {
+            Leasing leasing = new Leasing();
+            string query = $"select * from Leasing where Leasing.Student_No = {studentNo}";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        leasing.LeasingNo = Convert.ToInt32(reader["Leasing_No"]);
+                        leasing.DateFrom = Convert.ToDateTime(reader["Date_From"]);
+                        leasing.DateTo = Convert.ToDateTime(reader["Date_To"]);
+                        leasing.StudentNo = Convert.ToInt32(reader["Student_No"]);
+                        leasing.PlaceNo = Convert.ToInt32(reader["Place_No"]);
+                    }
+                }
+                return leasing;
+            }
+        }
+
         public void AddLeasing(Leasing leasing)
         {
             Student student = new Student();

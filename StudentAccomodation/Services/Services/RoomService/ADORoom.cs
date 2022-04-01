@@ -46,12 +46,21 @@ namespace StudentAccomodation.Services.Services.RoomService
             }
         }
 
-        //public static Room UpdateRoomStatus(Room room)
-        //{
-        //    return room;
-        //}
+        public void UpdateRoomStatus(Leasing leasing)
+        {
+            string query = $"UPDATE Room SET Occupied = 0 WHERE Room.Place_No = {leasing.PlaceNo};";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                }
+            }
+        }
 
 
-        
+
     }
 }
