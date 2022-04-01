@@ -14,16 +14,14 @@ namespace StudentAccomodation.Pages.Students
         private IStudentService studentService;
 
         public IEnumerable<Student> students { get; set; }
-        public Student Student { get; set; }
 
         public GetStudentsModel(IStudentService service)
         {
             studentService = service;
         }
-        public void OnGet(int studentNo)
+        public void OnGet()
         {
             students = studentService.GetAllStudents();
-            Student = studentService.GetStudentByStudentNo(studentNo);
         }
     }
 }

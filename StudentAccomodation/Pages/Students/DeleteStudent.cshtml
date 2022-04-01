@@ -1,0 +1,51 @@
+﻿@page
+@model StudentAccomodation.Pages.Students.DeleteStudentModel
+@{
+}
+<h1>Delete Student</h1>
+<br />
+<h3>Are you sure you want to DELETE this Student?</h3>
+<br />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.StudentNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.StudentNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.SName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.SName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.SAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.SAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.HasRent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayTextFor(model => model.Student.HasRent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.RegistrationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.RegistrationDate.Date)
+        </dd>
+    </dl>
+    <form method="post">
+        <div>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    </form>
+    <br />
+    <div>
+        <a asp-page="/Students/GetStudents">Back to List</a>
+    </div>
+</div>

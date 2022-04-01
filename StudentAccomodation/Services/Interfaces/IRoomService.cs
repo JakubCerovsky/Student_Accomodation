@@ -10,6 +10,6 @@ namespace StudentAccomodation.Services.Interfaces
     {
         IEnumerable<Room> GetAllRooms();
 
-        void AddLeasing(Leasing leasing);
+        
     }
 }

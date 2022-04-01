@@ -45,12 +45,7 @@
             }
                 
             <td>
-                @*<form method="post">*@
-                    <div class="form-group">
-                        <input type="submit" value="Delete" class="btn btn-danger" />
-                        <input value="@item.StudentNo" name="studentNo" class="btn btn-primary" hidden />
-                    </div>
-                @*</form>*@
+                <a asp-page="/Students/DeleteStudent" asp-route-studentNo="@item.StudentNo">Delete</a>
             </td>
             </tr>
             }
