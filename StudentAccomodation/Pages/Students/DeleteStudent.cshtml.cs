@@ -12,12 +12,16 @@ namespace StudentAccomodation.Pages.Students
     public class DeleteStudentModel : PageModel
     {
         private IStudentService studentService;
+        private ILeasingService leasingService;
+        private IRoomService roomService;
         [BindProperty]
         public Student Student { get; set; }
-
-        public DeleteStudentModel(IStudentService service)
+       
+        public DeleteStudentModel(IStudentService sService, ILeasingService lService, IRoomService rService)
         {
-            studentService = service;
+            studentService = sService;
+            leasingService = lService;
+            roomService = rService;
         }
         public void OnGet(int studentNo)
         {
@@ -26,7 +30,8 @@ namespace StudentAccomodation.Pages.Students
 
         public IActionResult OnPost(int studentNo)
         {
-            studentService.DeleteStudent(Student = studentService.GetStudentByStudentNo(studentNo));
+            roomService.UpdateRoomStatus(leasingService.GetLeasingByStudentNo(studentNo));
+            studentService.DeleteStudent(studentService.GetStudentByStudentNo(studentNo));
             return RedirectToPage("GetStudents");
         }
     }
