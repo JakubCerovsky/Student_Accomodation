@@ -30,14 +30,9 @@
 
             @if (item.HasRent == true)
             {
-                <td>
-                    @*<form method="post">*@
-                    <div class="form-group">
-                        <input type="submit" value="Leasing" class="btn btn-success" />
-                        <input value="@item.StudentNo" name="studentNo" class="btn btn-primary" hidden />
-                    </div>
-                    @*</form>*@
-                </td>
+            <td>
+                <a asp-page="/Students/GetLeasings" asp-route-studentNo="@item.StudentNo" class="btn btn-success">Leasing</a>
+            </td>
             }
             else 
             { 

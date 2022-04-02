@@ -25,5 +25,10 @@ namespace StudentAccomodation.Services.Services.RoomService
         {
             service.UpdateRoomStatus(leasing);
         }
+        public Room GetRoomByPlaceNo(int placeNo)
+        {
+           return service.GetRoomByPlaceNo(placeNo);
+        }
+
     }
 }

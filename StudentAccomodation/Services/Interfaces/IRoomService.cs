@@ -11,5 +11,6 @@ namespace StudentAccomodation.Services.Interfaces
         IEnumerable<Room> GetAllRooms();
 
         void UpdateRoomStatus(Leasing leasing);
+        Room GetRoomByPlaceNo(int placeNo);
     }
 }
