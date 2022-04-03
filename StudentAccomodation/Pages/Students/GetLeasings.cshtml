@@ -2,3 +2,106 @@
 @model StudentAccomodation.Pages.Students.GetLeasingsModel
 @{
 }
+<h1>Leasing</h1>
+<br />
+<br />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.StudentNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.StudentNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.SName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.SName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.SAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.SAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.HasRent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayTextFor(model => model.Student.HasRent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.RegistrationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.RegistrationDate.Date)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Room.PlaceNo)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Room.PlaceNo)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Room.RentPerSemester)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Room.RentPerSemester)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Room.Occupied)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Room.Occupied)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Room.RoomNo)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Room.RoomNo)
+        </dd>
+        @if (Model.Room.ApartmentNo == 1)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Room.ApartmentNo)
+            </dt>
+            <dt class="col-sm-10">
+                @Html.DisplayFor(model => model.Room.ApartmentNo)
+            </dt>
+        }
+        else
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Room.DormitoryNo)
+            </dt>
+            <dt class="col-sm-10">
+                @Html.DisplayFor(model => model.Room.DormitoryNo)
+            </dt>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Leasing.DateFrom)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Leasing.DateFrom)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Leasing.DateTo)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Leasing.DateTo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Leasing.LeasingNo)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Leasing.LeasingNo)
+        </dt>
+    </dl>
+    <br />
+    <div>
+        <a asp-page="/Students/GetStudents">Back to List</a>
+    </div>
+</div>
